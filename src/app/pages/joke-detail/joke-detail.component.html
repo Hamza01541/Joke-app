@@ -1,0 +1,8 @@
+<h1 class="align-center">Joke Detail</h1>
+
+
+<div *ngIf="jokeDetail">
+    <span><b>Joke: </b> {{jokeDetail.joke}}</span>
+</div>
+
+<button mat-button color="warn" [routerLink]="['/joke-list']">< Back to list</button>

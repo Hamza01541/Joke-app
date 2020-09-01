@@ -1,0 +1,15 @@
+@import './assets/themes/dark-theme.scss';
+@import './assets/themes/light-theme.scss';
+@import '~@angular/material/theming';
+@include mat-core();
+
+/** Light Theme */
+.light-theme {
+  @include angular-material-theme($light-theme);
+}
+
+/** Dark Theme */
+.dark-theme {
+  @include angular-material-theme($dark-theme);
+}
+

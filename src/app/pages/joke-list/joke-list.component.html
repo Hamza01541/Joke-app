@@ -1,0 +1,32 @@
+<h1 class="align-center">Joke List</h1>
+
+<div>
+    <!-- Search box -->
+    <div>
+        <mat-form-field class="example-form-field">
+            <mat-label>Search</mat-label>
+            <input matInput type="text" [(ngModel)]="searchStr" (keyup)="getJokes()">
+            <button mat-button *ngIf="searchStr" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
+                <mat-icon>x</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+
+    <!-- Jokes List -->
+    <div *ngIf="totalCount > 0">
+        <mat-nav-list class="mat-list">
+            <mat-list-item *ngFor="let joke of jokes; let i = index">
+                <a matLine [routerLink]="['/joke-detail']" [queryParams]="{id: joke.id}">- {{ joke.joke }}</a>
+            </mat-list-item>
+        </mat-nav-list>
+
+        <!-- Pagination Component -->
+        <app-pagination [pageSize]="pageSize" [totalCount]="totalCount" (pageChanged)="getJokes($event)">
+        </app-pagination>
+    </div>
+
+    <div class="align-center" *ngIf="totalCount === 0">
+        <h3>Data not found...</h3>
+    </div>
+
+</div>
